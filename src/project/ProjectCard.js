@@ -2,7 +2,7 @@ import ProjectItems from "./ProjectItems";
 const ProjectCard=({projects})=>{
  return (
     
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6"> 
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4"> 
 <ProjectItems  projects={projects}/>
 </div>
  )

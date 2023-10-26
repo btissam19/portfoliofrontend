@@ -6,6 +6,7 @@ import Contact from './Forms/Contact';
 import SkillsForm from './Forms/SkillsForm';
 import ProjectForm from './Forms/ProjectForm';
 import Project from './project/Project'
+import ResumeDownloading from './Forms/Resume';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -32,30 +33,37 @@ function App() {
         fetchSkills();
     }, []);
 
-    const projectsData = [
-        {
-          id: "1",
-          image: "https://via.placeholder.com/150",
-          name: "Project A",
-          technologie: "React, TailwindCSS",
-          description: "This is a description for Project A. It showcases capabilities using React and TailwindCSS."
-        },
-        {
-          id: "2",
-          image: "https://via.placeholder.com/150",
-          name: "Project B",
-          technologie: "Node.js, Express",
-          description: "Project B is developed using Node.js and Express. It's a backend service that provides various APIs."
+
+    const [project,setproject]=useState([]);
+
+    const fetchProject= async ()=>{
+        try {
+
+            const response= await fetch('http://localhost:5000/projects',{
+            method:'GET' 
+        })
+        if (!response.ok) {
+            throw new Error('Failed to fetch skills');
         }
-    ];
+
+        const data = await response.json();
+        setproject(data)
+
+            
+        } catch (error) {
+            console.error("There was an error fetching the skills:", error);
+        } 
+    }
+useEffect(()=>{fetchProject()},[])
 
     return (
         <>
             <Home />
             <Skills skills={skills} />
             <SkillsForm />
-            <Project projects={projectsData} />
+            <Project projects={project} />
             <ProjectForm/>
+            <ResumeDownloading/>
             <Contact />
             <Footer />
         </>

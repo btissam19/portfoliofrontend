@@ -18,7 +18,6 @@ function SkillsForm() {
             method: 'POST',
             body: formDataObj
         });
-
         const data = await res.json();
         console.log(data);
     };
