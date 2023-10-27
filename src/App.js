@@ -7,6 +7,8 @@ import SkillsForm from './Forms/SkillsForm';
 import ProjectForm from './Forms/ProjectForm';
 import Project from './project/Project'
 import ResumeDownloading from './Forms/Resume';
+import RegisterForm from './Forms/RegisterForm';
+import LoginForm from './Forms/LoginForm';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -59,6 +61,8 @@ useEffect(()=>{fetchProject()},[])
     return (
         <>
             <Home />
+            <RegisterForm/>
+            <LoginForm/>
             <Skills skills={skills} />
             <SkillsForm />
             <Project projects={project} />
