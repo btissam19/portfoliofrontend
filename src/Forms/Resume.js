@@ -26,7 +26,7 @@ const ResumeDownloading= ()=>{
     };
 
     return (
-        <div className="max-w-lg lg:ms-auto mx-auto text-center">
+        <div className="max-w-lg lg:ms-auto mx-auto text-center" id="resume">
             <div className="py-16 px-7 rounded-md bg-white">
                 <form  encType="multipart/form-data" onSubmit={handleSubmit}>
                     <div className="grid md:grid-cols-2 grid-cols-1 gap-6">

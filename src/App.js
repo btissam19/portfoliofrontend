@@ -1,4 +1,5 @@
 import './App.css';
+import {  Routes, Route } from "react-router-dom";
 import Home from './home/Home';
 import Footer from './home/Footer';
 import Skills from './skills/Skills';
@@ -13,6 +14,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
     const [skills, setSkills] = useState([]);
+    const [project, setProject] = useState([]);
 
     const fetchSkills = async () => {
         try {
@@ -25,52 +27,58 @@ function App() {
             }
 
             const data = await response.json(); 
-            setSkills(data); // Directly setting the array to the state
+            setSkills(data); 
         } catch (error) {
             console.error("There was an error fetching the skills:", error);
         }
+    }
+
+    const fetchProject = async () => {
+        try {
+            const response = await fetch('http://localhost:5000/projects', {
+                method: 'GET',
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch projects');
+            }
+
+            const data = await response.json();
+            setProject(data);   
+        } catch (error) {
+            console.error("There was an error fetching the projects:", error);
+        } 
     }
 
     useEffect(() => {
         fetchSkills();
     }, []);
 
+    useEffect(() => {
+        fetchProject();
+    }, []);
 
-    const [project,setproject]=useState([]);
-
-    const fetchProject= async ()=>{
-        try {
-
-            const response= await fetch('http://localhost:5000/projects',{
-            method:'GET' 
-        })
-        if (!response.ok) {
-            throw new Error('Failed to fetch skills');
-        }
-
-        const data = await response.json();
-        setproject(data)
-
-            
-        } catch (error) {
-            console.error("There was an error fetching the skills:", error);
-        } 
+    function MainContent(props) {
+        return (
+            <>
+                <Home />
+                <Skills skills={props.skills} />
+                <SkillsForm />
+                <Project projects={props.projects} />
+                <ProjectForm />
+                <ResumeDownloading />
+                <Contact />
+                <Footer />
+            </>
+        );
     }
-useEffect(()=>{fetchProject()},[])
 
     return (
-        <>
-            <Home />
-            <RegisterForm/>
-            <LoginForm/>
-            <Skills skills={skills} />
-            <SkillsForm />
-            <Project projects={project} />
-            <ProjectForm/>
-            <ResumeDownloading/>
-            <Contact />
-            <Footer />
-        </>
+            <Routes>
+                <Route path='/' element={<MainContent skills={skills} projects={project} />} />
+                <Route path='/register' element={<RegisterForm />} />
+                <Route path='/login' element={<LoginForm />} />
+            </Routes>
     );
 }
 
