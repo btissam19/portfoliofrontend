@@ -18,8 +18,8 @@ const ProjectItems=({projects})=>{
       <hr className="my-4" />
       <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">{project.projectDecription}</p>
       <div className="flex justify-center gap-2 ">
-        <button type="button"className="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline"> Code</button>
-         <button type="button" className="border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"> Live</button>
+        <button type="button"className="px-4 py-2 text-sm m-2 text-gray-900 bg-transparent border-2 border-gray-800 dark:bg-white hover:bg-red-200 dark:text-white text-md"> Code</button>
+         <button type="button" className="px-4 py-2 text-sm m-2 text-gray-900 bg-transparent border-2 border-gray-800 dark:bg-white hover:bg-red-200 dark:text-white text-md"> Live</button>
       </div>
       </div>
     </div>

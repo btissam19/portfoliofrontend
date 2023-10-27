@@ -20,8 +20,6 @@ const LoginForm = () => {
 
             if (data.token) {
                 localStorage.setItem('token', data.token);
-                
-                // Redirect the user to the page with the ProjectForm
                 navigate('/forms'); 
             } else {
                 console.error(data.message || 'Login failed');
@@ -43,18 +41,18 @@ const LoginForm = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="mb-6">
                         <label htmlFor="email" className="block mb-2 text-sm text-gray-600"></label>
-                        <input type="text" placeholder="name.lastname@domain" id="username" name="email" value={users.email}  onChange={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required />
+                        <input type="text" placeholder="name.lastname@domain" id="username" name="email" value={users.email}  onChange={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-200" required />
                     </div>
                     <div className="mb-6">
                         <label htmlFor="password" className="block mb-2 text-sm text-gray-600">Password</label>
-                        <input type="password" placeholder="Password" id="password" name="password" value={users.password}  onChange={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required />
+                        <input type="password" placeholder="Password" id="password" name="password" value={users.password}  onChange={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-200" required />
                     </div>
-                    <div className="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white text-center py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mt-4 mb-6">
+                    <div className="w-32 bg-gradient-to-r from-red-300 to-red-200 text-white text-center py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-200 mt-4 mb-6">
                         <input type="submit" value="Submit" style={{ background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }} />
                     </div>
                 </form>
                 <div className="text-center">
-                    <p className="text-sm">do you have an account? <Link to="/register" className="text-cyan-600">back for register</Link></p>
+                    <p className="text-sm">do you have an account? <Link to="/register" className="text-red-300">back for register</Link></p>
                 </div>
             </div>
         </div>

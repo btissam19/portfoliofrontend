@@ -1,21 +1,18 @@
 const Header = () => {
     return (
-        <header className="z-30 flex items-center w-full h-24 sm:h-32">
-            <div className="container flex items-center justify-between px-6 mx-auto">
-                <div className="flex items-center text-3xl font-black text-gray-800 uppercase dark:text-white">
-                    {/* Consider importing SVG as a component for cleaner code */}
-                    <svg width="25" height="25" viewBox="0 0 1792 1792" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1664 1504v-768q-32...[snipped for brevity]..." />
-                    </svg>
-                    <span className="mt-1 ml-3 text-xs">btissamchaibi1912@gmail.com</span>
+        
+        <header className=" z-30 flex items-center w-full  sm:h-32 " >
+            <div className="container flex items-center justify-between    ">
+                <div className="flex items-center text-3xl font-black text-gray-800  dark:text-white">
+                    <span className=" ml-3 text-xs">btissamchaibi1912@gmail.com</span>
                 </div>
-                <div className="flex items-center">
-                    <nav className="items-center hidden text-lg text-gray-800 uppercase font-sen dark:text-white lg:flex">
-                        <a href="#home" className="flex px-6 py-2 hover:text-black">Home</a>
-                        <a href="#skills" className="flex px-6 py-2 hover:text-black">Skills</a>
-                        <a href="#projects" className="flex px-6 py-2 hover:text-black">Projects</a>
-                        <a href="#resume" className="flex px-6 py-2 hover:text-black">Resume</a>
-                        <a href="#contact" className="flex px-6 py-2 hover:text-black">Contact_Me</a>
+                <div className="flex items-center ">
+                    <nav className="items-center hidden text-lg text-gray-800  dark:text-white lg:flex">
+                        <a href="#home" className="flex px-6  hover:text-red-300">Home</a>
+                        <a href="#skills" className="flex px-6  hover:text-red-300">Skills</a>
+                        <a href="#projects" className="flex px-6  hover:text-red-300">Projects</a>
+                        <a href="#resume" className="flex px-6  hover:text-red-300">Resume</a>
+                        <a  href="#contact" className="px-4 py-2  text-gray-900  bg-transparent border-2 border-gray-800  dark:bg-white hover:bg-red-200 dark:text-white  text-md">Contact_Me</a>
                         
                     </nav>
                     <button className="flex flex-col ml-4 lg:hidden" aria-label="Menu">

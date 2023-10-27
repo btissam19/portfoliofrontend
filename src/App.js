@@ -1,13 +1,11 @@
 import './App.css';
+import 'normalize.css';
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from './home/Home';
 import Footer from './home/Footer';
 import Skills from './skills/Skills';
 import Contact from './Forms/Contact';
-import SkillsForm from './Forms/SkillsForm';
-import ProjectForm from './Forms/ProjectForm';
 import Project from './project/Project';
-import ResumeDownloading from './Forms/Resume';
 import RegisterForm from './Forms/RegisterForm';
 import LoginForm from './Forms/LoginForm';
 import ProtectForm from './Forms/ProtectForms';
@@ -61,19 +59,17 @@ function App() {
     }, []);
 
     const { isAuthenticated } = useAuth();  // Fetch the authentication status
-
     function MainContent() {
         return (
-            <>
+            <div >
                 <Home />
-                <Skills skills={skills} />
-                <Project projects={project} />
-                <Contact />
-                <Footer />
-            </>
+            <Skills className="-mt-5" skills={skills} />
+            <Project className="-mt-5" projects={project} />
+            <Contact className="-mt-5" />
+            <Footer className="-mt-5" />
+            </div>
         );
     }
-
     return (
         <Routes>
             <Route path='/' element={<MainContent />} />

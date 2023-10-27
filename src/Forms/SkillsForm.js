@@ -42,13 +42,13 @@ function SkillsForm() {
     };
 
     return (
-        <div className="max-w-lg lg:ms-auto mx-auto text-center">
-            <div className="py-16 px-7 rounded-md bg-white">
+        <div className="max-w-lg lg:ms-auto mx-auto text-center ">
+            <div className="py-16 px-7 rounded-md bg-red-50">
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
                         <div className="md:col-span-2">
                             <label htmlFor="category" className="float-left block font-normal text-gray-400 text-lg">category :</label>
-                            <select id="category" name="category" onChange={handleInput} className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700">
+                            <select id="category" name="category" onChange={handleInput} className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-200">
                                 <option value="frontend">Frontend</option>
                                 <option value="backend">Backend</option>
                                 <option value="database">Database</option>
@@ -57,14 +57,14 @@ function SkillsForm() {
                         </div>
                         <div className="md:col-span-2">
                             <label htmlFor="file" className="float-left block font-normal text-gray-400 text-lg">technologie logo :</label>
-                            <input type="file" id="file" name="file" onChange={handleInput} className="peer block w-full appearance-none border-none bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" />
+                            <input type="file" id="file" name="file" onChange={handleInput} className="peer block w-full appearance-none border-none bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-red-200 focus:outline-none focus:ring-0" />
                         </div>
                         <div className="md:col-span-2">
                             <label htmlFor="technologie" className="float-left block font-normal text-gray-400 text-lg">technologie name:</label>
-                            <input type="text" id="technologie" value={formData.skills.technologie} onChange={handleInput} name="technologie" placeholder="technologie name" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700" />
+                            <input type="text" id="technologie" value={formData.skills.technologie} onChange={handleInput} name="technologie" placeholder="technologie name" className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-red-200" />
                         </div>
                         <div className="md:col-span-2">
-                            <button className="py-3 text-base font-medium rounded text-white bg-blue-800 w-full hover:bg-blue-700 transition duration-300">Valider</button>
+                        <button type="submit" className="py-3 text-base font-medium rounded text-black bg-red-300 w-full  transition duration-300">Valider</button>
                         </div>
                     </div>
                 </form>

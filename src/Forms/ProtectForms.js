@@ -9,7 +9,7 @@ const ProtectForm = () => {
       
       <div className="flex-1 bg-white p-4 shadow rounded-lg m-2">
           <h2 className="text-gray-500 text-lg font-semibold pb-1">Add Project</h2>
-          <div className="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div className="bg-gradient-to-r from-red-400 to-red-200 h-px mb-6"></div>
           <div className="content-container">
              <ProjectForm />
           </div>
@@ -17,7 +17,7 @@ const ProtectForm = () => {
 
       <div className="flex-1 bg-white p-4 shadow rounded-lg m-2">
           <h2 className="text-gray-500 text-lg font-semibold pb-1">Add Skill</h2>
-          <div className="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div className="bg-gradient-to-r from-red-400 to-red-200 h-px mb-6"></div>
           <div className="content-container">
              <SkillsForm />
           </div>
@@ -25,7 +25,7 @@ const ProtectForm = () => {
 
       <div className="flex-1 bg-white p-4 shadow rounded-lg m-2">
           <h2 className="text-gray-500 text-lg font-semibold pb-1">Download Resume</h2>
-          <div className="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div>
+          <div className="bg-gradient-to-r from-red-400 to-red-200 h-px mb-6"></div>
           <div className="content-container">
              <ResumeDownloading />
           </div>
