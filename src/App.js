@@ -1,16 +1,18 @@
 import './App.css';
-import {  Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from './home/Home';
 import Footer from './home/Footer';
 import Skills from './skills/Skills';
-import Contact from './Forms/Contact'; 
+import Contact from './Forms/Contact';
 import SkillsForm from './Forms/SkillsForm';
 import ProjectForm from './Forms/ProjectForm';
-import Project from './project/Project'
+import Project from './project/Project';
 import ResumeDownloading from './Forms/Resume';
 import RegisterForm from './Forms/RegisterForm';
 import LoginForm from './Forms/LoginForm';
+import ProtectForm from './Forms/ProtectForms';
 import { useEffect, useState } from 'react';
+import { useAuth } from './AuthContext'; 
 
 function App() {
     const [skills, setSkills] = useState([]);
@@ -26,8 +28,8 @@ function App() {
                 throw new Error('Failed to fetch skills');
             }
 
-            const data = await response.json(); 
-            setSkills(data); 
+            const data = await response.json();
+            setSkills(data);
         } catch (error) {
             console.error("There was an error fetching the skills:", error);
         }
@@ -40,14 +42,14 @@ function App() {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to fetch projects');
+                throw  Error('Failed to fetch projects');
             }
 
             const data = await response.json();
-            setProject(data);   
+            setProject(data);
         } catch (error) {
             console.error("There was an error fetching the projects:", error);
-        } 
+        }
     }
 
     useEffect(() => {
@@ -58,15 +60,14 @@ function App() {
         fetchProject();
     }, []);
 
-    function MainContent(props) {
+    const { isAuthenticated } = useAuth();  // Fetch the authentication status
+
+    function MainContent() {
         return (
             <>
                 <Home />
-                <Skills skills={props.skills} />
-                <SkillsForm />
-                <Project projects={props.projects} />
-                <ProjectForm />
-                <ResumeDownloading />
+                <Skills skills={skills} />
+                <Project projects={project} />
                 <Contact />
                 <Footer />
             </>
@@ -74,11 +75,16 @@ function App() {
     }
 
     return (
-            <Routes>
-                <Route path='/' element={<MainContent skills={skills} projects={project} />} />
-                <Route path='/register' element={<RegisterForm />} />
-                <Route path='/login' element={<LoginForm />} />
-            </Routes>
+        <Routes>
+            <Route path='/' element={<MainContent />} />
+            <Route path='/register' element={<RegisterForm />} />
+            <Route path='/login' element={<LoginForm />} />
+            <Route 
+                path='/forms' 
+                element={isAuthenticated ? <ProtectForm/> : <Navigate to="/login" replace />} 
+            />
+             
+        </Routes>
     );
 }
 

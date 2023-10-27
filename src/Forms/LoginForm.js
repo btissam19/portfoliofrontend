@@ -1,45 +1,53 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 const LoginForm = () => {
+    const navigate = useNavigate();
+    const [users, setUsers] = useState({});
 
-    const [users,setUsers]=useState({})
-     const handelSubmit=async (e)=>{
-
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res= await fetch('http://localhost:5000/users/login',{
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(users)}
-            
-            )
-            const data= await res.json();
-            console.log(data)
-            
+            const res = await fetch('http://localhost:5000/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(users)
+            });
+
+            const data = await res.json();
+
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                
+                // Redirect the user to the page with the ProjectForm
+                navigate('/forms'); 
+            } else {
+                console.error(data.message || 'Login failed');
+            }
         } catch (error) {
             console.error("Error sending data:", error);
         }
-     
-    
-    }
-    const handelInput =  (e)=>{
+    };
+
+    const handelInput = (e) => {
         const { name, value } = e.target;
         setUsers(prevState => ({ ...prevState, [name]: value }));
     }
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-lg">
                 <h1 className="text-2xl font-semibold text-center text-gray-500 mt-8 mb-6">Login</h1>
-                <form onSubmit={handelSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className="mb-6">
                         <label htmlFor="email" className="block mb-2 text-sm text-gray-600"></label>
-                        <input type="text" placeholder="name.lastname@domain" id="username" name="email" value={users.email}  onChange ={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required />
+                        <input type="text" placeholder="name.lastname@domain" id="username" name="email" value={users.email}  onChange={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required />
                     </div>
                     <div className="mb-6">
                         <label htmlFor="password" className="block mb-2 text-sm text-gray-600">Password</label>
-                        <input type="password" placeholder="Password" id="password" name="password" value={users.password}  onChange ={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required />
+                        <input type="password" placeholder="Password" id="password" name="password" value={users.password}  onChange={handelInput} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required />
                     </div>
                     <div className="w-32 bg-gradient-to-r from-cyan-400 to-cyan-600 text-white text-center py-2 rounded-lg mx-auto block focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 mt-4 mb-6">
                         <input type="submit" value="Submit" style={{ background: 'none', border: 'none', cursor: 'pointer', outline: 'none' }} />
@@ -53,4 +61,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm ;
+export default LoginForm;
